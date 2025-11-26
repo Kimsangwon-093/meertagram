@@ -1,7 +1,7 @@
 /**
  * @file databases/seeders/dummy-users.seeder.js
  * @description users table dummy data create
- * 251118 v1.0.0 park init
+ * 251118 v1.0.0 Kim init
  */
 import bcrypt from 'bcrypt';
 
@@ -25,7 +25,7 @@ const records = [
     password: bcrypt.hashSync('qwe12312', 10),
     nick: '미어캣관리자2',
     provider: 'KAKAO',
-    role: 'NOMAL',
+    role: 'NORMAL',
     profile: '',
     created_at: new Date(),
     updated_at: new Date(),

@@ -40,4 +40,5 @@ async function save(t = null, user) {
 
 export default {
   findByEmail,
+  save,
 }
