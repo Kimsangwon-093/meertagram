@@ -1,21 +1,16 @@
 /**
- * @file routes/auth.Router.js
+ * @file routes/auth.router.js
  * @description 인증 관련 라우터
- * 251119 v1.0.0 Kim init
+ * 251119 v1.0.0 park init
  */
 
-import express from "express";
-import  authController from "../app/controllers/auth.controller.js";
-import loginValidator from "../app/middlewares/validations/validators/auth/login.validator.js";
-import validationHandler from "../app/middlewares/validations/validationHandler.js";
-import authMiddleware from "../app/middlewares/auth/auth.middleware.js";
+import express from 'express';
+import authController from '../app/controllers/auth.controller.js';
+import loginValidator from '../app/middlewares/validations/validators/auth/login.validator.js';
+import validationHandler from '../app/middlewares/validations/validationHandler.js';
 
 const authRouter = express.Router();
 
 authRouter.post('/login', loginValidator, validationHandler, authController.login);
-authRouter.post('/reissue', authMiddleware, (req, res, next) => {
-  return res.send('reissue test');
-});
 
-// return: 함수를 종료한다.
 export default authRouter;
