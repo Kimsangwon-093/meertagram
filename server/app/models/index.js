@@ -1,19 +1,24 @@
 /**
  * @file app/models/index.js
  * @description Sequelize 인스턴스 생성 File
- * 251120 v1.0.0 Kim init
+ * 251120 v1.0.0 park init
  */
 
 import '../../configs/env.config.js';
 import { Sequelize } from 'sequelize';
 import User from './User.js';
+import Post from './Post.js';
+import Comment from './Comment.js';
+import Like from './Like.js';
+import Notification from './Notification.js';
+import PushSubscription from './PushSubscription.js';
 
 const db = {}; // 생성할 db 인스턴스 저장용
 
 // Sequelize 인스턴스 생성
 const sequelize = new Sequelize(
   process.env.DB_MYSQL_DB_NAME        // DB명
-    , process.env.DB_MYSQL_USER         // DB 접속 유저
+  , process.env.DB_MYSQL_USER         // DB 접속 유저
   , process.env.DB_MYSQL_PASSWORD     // DB 접속 패스워드
   ,{
     host: process.env.DB_MYSQL_HOST                     // 사용 DB Host
@@ -37,8 +42,18 @@ db.sequelize = sequelize; // 생성한 sequelize 인스턴스 db에 저장
 
 // 모델 초기화
 db.User = User.init(sequelize);
+db.Post = Post.init(sequelize);
+db.Comment = Comment.init(sequelize);
+db.Like = Like.init(sequelize);
+db.Notification = Notification.init(sequelize);
+db.PushSubscription = PushSubscription.init(sequelize);
 
 // 모델 관계 설정
-
+User.associate(db);
+Post.associate(db);
+Comment.associate(db);
+Like.associate(db);
+Notification.associate(db);
+PushSubscription.associate(db);
 
 export default db;
