@@ -27,13 +27,24 @@ async function findByEmail(t = null, email) {
 }
 
 /**
- * 
+ * 유저모델 인스턴스로 save
  * @param {import("sequelize").Transaction} t 
  * @param {import("../models/index.js").User} user 
  * @returns 
  */
 async function save(t = null, user) {
   return await user.save({ transaction: t });
+}
+
+
+/**
+ * 유저id로 유저정보 조회
+ * @param {import("sequelize").Transaction} t 
+ * @param {import("../models/index.js").User} user 
+ * @returns 
+ */
+async function findByPk(t = null, id) {
+  return await User.findByPk(id, {})
 }
 
 export default {
