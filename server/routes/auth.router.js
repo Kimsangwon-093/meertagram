@@ -12,6 +12,6 @@ import validationHandler from '../app/middlewares/validations/validationHandler.
 const authRouter = express.Router();
 
 authRouter.post('/login', loginValidator, validationHandler, authController.login);
-authRouter.post('/reissue', );
+authRouter.post('/reissue', authController.reissue);
 
 export default authRouter;

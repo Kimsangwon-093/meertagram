@@ -5,6 +5,7 @@
  */
 
 import { REISSUE_ERROR, SUCCESS } from "../../configs/responseCode.config.js";
+import myError from "../errors/customs/my.error.js";
 import authService from "../services/auth.service.js";
 import cookieUtil from "../utils/cookie/cookie.util.js";
 import { createBaseResponse } from "../utils/createBaseResponse.util.js";
@@ -35,22 +36,6 @@ async function login(req, res, next) {
   }
 }
 
-
-/**
- * @file app/controllers/auth.controller.js
- * @description 인증 관련 컨트롤러
- * 251119 v1.0.0 park init
- */
-
-import { SUCCESS } from "../../configs/responseCode.config.js";
-import authService from "../services/auth.service.js";
-import cookieUtil from "../utils/cookie/cookie.util.js";
-import { createBaseResponse } from "../utils/createBaseResponse.util.js";
-import myError from "../errors/customs/my.error.js";
-
-// ----------------
-// ---- public ----
-// ----------------
 /**
  * 토큰 재발급 컨트롤러 처리
  * @param {import("express").Request} req - Request 객체
@@ -63,18 +48,18 @@ async function reissue(req, res, next) {
     const token = cookieUtil.getCookieRefreshToken(req);
 
     // 토큰 존재 여부 확인
-    if(!token){
-      throw myError('리프레시 토큰 없음',REISSUE_ERROR);
+    if(!token) {
+      throw myError('리프래시 토큰 없음', REISSUE_ERROR);
     }
 
     // 토큰 재발급 처리
     const { accessToken, refreshToken, user } = await authService.reissue(token);
 
-    // 쿠키에 리프레시 토큰 설정
+    // 쿠키에 리프래시 토큰 설정
     cookieUtil.setCookieRefreshToken(res, refreshToken);
 
-    return res.status(SUCCESS.status).send(createBaseResponse(SUCCESS, {accessToken, user}))
-  } catch (error) {
+    return res.status(SUCCESS.status).send(createBaseResponse(SUCCESS, { accessToken, user }))
+  } catch(error) {
     next(error);
   }
 }
