@@ -1,7 +1,7 @@
 /**
  * @file app.js
  * @description Entry Point
- * 251117 v1.0.0 Kim
+ * 251117 v1.0.0 park
  */
 
 import express from 'express';
@@ -15,33 +15,38 @@ import filesRouter from './routes/files.router.js';
 import postsRouter from './routes/posts.router.js';
 import notFoundRouter from './routes/notFound.router.js';
 import pathUtil from './app/utils/path/path.util.js';
+import cookieParser from 'cookie-parser';
+import commentsRouter from './routes/comments.router.js';
 
 const app = express();
 app.use(express.json()); // JSON 요청 파싱 처리
+app.use(cookieParser()); // 쿠키 파서
 
 // --------------------
-// 정적 파일 제공 등록
+//  정적 파일 제공 등록
 // --------------------
-app.use(process.env.ACCESS_FILE_POST_IMAGE_PATH, express.static(process.env.ACCESS_FILE_POST_IMAGE_PATH));
-app.use(process.env.ACCESS_FILE_USER_PROFILE_PATH, express.static(process.env.ACCESS_FILE_POST_IMAGE_PATH));
-
+app.use(process.env.ACCESS_FILE_POST_IMAGE_PATH, express.static(process.env.FILE_POST_IMAGE_PATH));
+app.use(process.env.ACCESS_FILE_USER_PROFILE_PATH, express.static(process.env.FILE_USER_PROFILE_PATH));
 
 // --------------------
 // Swagger 등록
 // --------------------
 // swagger yaml file bundling
-const swaggerDoc = await SwaggerParser.bundle(path.join(path.resolve(),'swagger/swagger.yaml'));
+const swaggerDoc = await SwaggerParser.bundle(path.join(path.resolve(), 'swagger/swagger.yaml'));
 // swagger ui 등록
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+
 // --------------------
 // 라우터 정의
 // --------------------
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/files', filesRouter);
+app.use('/api/comments', commentsRouter);
 
-
+// --------------------
 // 404 처리
+// --------------------
 app.use(notFoundRouter);
 
 // --------------------
@@ -51,11 +56,12 @@ app.use(notFoundRouter);
 app.use('/', express.static(process.env.APP_DIST_PATH));
 // React 뷰 반환
 app.get(/^(?!\/files).*/, (req, res) => {
-  console.log(pathUtil.getViewDirPath());
   return res.sendFile(pathUtil.getViewDirPath());
 });
 
+// --------------------
 // 에러 핸들러 등록
+// --------------------
 app.use(errorHandler);
 
 // --------------------
