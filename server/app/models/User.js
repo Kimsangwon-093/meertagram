@@ -1,7 +1,7 @@
 /**
  * @file app/models/User.js
  * @description user model
- * 251120 v1.0.0 park init
+ * 251120 v1.0.0 kim init
  */
 
 import dayjs from 'dayjs';
@@ -52,7 +52,7 @@ const attributes = {
   },
   profile: {
     field: 'profile',
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(255),
     allowNull: false,
     comment: '유저 프로필',
   },
