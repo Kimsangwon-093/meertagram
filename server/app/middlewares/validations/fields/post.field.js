@@ -1,7 +1,7 @@
 /**
  * @file app/middlewares/validations/fields/post.field.js
  * @description 게시글 유효성 검사 필드
- * 251201 v1.0.0 Kim init
+ * 251128 v1.0.0 park init
  */
 
 import { body, param, query } from "express-validator";

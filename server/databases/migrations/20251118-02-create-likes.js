@@ -7,7 +7,6 @@
 import { DataTypes } from 'sequelize';
 
 // 테이블명
-
 const tableName = 'likes';
 
 // 컬럼 정의
@@ -20,33 +19,28 @@ const attributes = {
     autoIncrement: true,
     comment: '좋아요 PK',
   },
-
   userId: {
     field: 'user_id',
     type: DataTypes.BIGINT.UNSIGNED,
     allowNull: false,
     comment: '유저 PK',
   },
-
   postId: {
     field: 'post_id',
     type: DataTypes.BIGINT.UNSIGNED,
     allowNull: false,
     comment: '게시글 PK',
   },
-
   createdAt: {
     field: 'created_at',
     type: DataTypes.DATE,
     allowNull: true,
   },
-
   updatedAt: {
     field: 'updated_at',
     type: DataTypes.DATE,
     allowNull: true,
   },
-
   deletedAt: {
     field: 'deleted_at',
     type: DataTypes.DATE,

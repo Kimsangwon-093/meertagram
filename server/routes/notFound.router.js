@@ -1,7 +1,7 @@
 /**
- * @file routes/posts.Router.js
+ * @file routes/notFound.router.js
  * @description 404 관련 라우터
- * 251128 v1.0.0 Kim init
+ * 251128 v1.0.0 park init
  */
 
 import express from 'express';
@@ -11,7 +11,7 @@ import { createBaseResponse } from '../app/utils/createBaseResponse.util.js';
 const notFoundRouter = express.Router();
 
 notFoundRouter.all(/^\/api\/.*/, (req, res) => {
-  return res.status(NOT_FOUND_ERROR.status).send(createBaseResponse(NOT_FOUND_ERROR))
+  return res.status(NOT_FOUND_ERROR.status).send(createBaseResponse(NOT_FOUND_ERROR));
 });
 
 export default notFoundRouter;

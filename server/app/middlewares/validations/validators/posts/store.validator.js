@@ -1,9 +1,9 @@
 /**
- * @file app/middlewares/validations/validators/comments/store.validator.js
- * @description 코멘트 작성 검사기
- * 251203 v1.0.0 park init
+ * @file app/middlewares/validations/validators/posts/show.validator.js
+ * @description 게시글 show 검사기
+ * 251128 v1.0.0 park init
  */
 
-import { content, postId, replyId } from "../../fields/comment.field.js";
+import { content, image } from "../../fields/post.field.js";
 
-export default [postId, replyId, content];
+export default [content, image];

@@ -1,7 +1,7 @@
 /**
  * @file app/services/auth.service.js
  * @description auth Service
- * 251204 kim init
+ * 251120 park init
  */
 
 import axios from 'axios';
@@ -60,6 +60,14 @@ async function login(body) {
 }
 
 /**
+ * 로그아웃 처리
+ * @param {number} id - 유저id
+ */
+async function logout(id) {
+  return await userRepository.logout(null, id);
+}
+
+/**
  * 토큰 재발급 처리
  * @param {string} token 
  */
@@ -96,9 +104,9 @@ async function reissue(token) {
 async function socialKakao(code) {
   // 토큰 획득 요청에 필요한 헤더와 바디 작성
   const tokenRequest = socialKakaoUtil.getTokenRequest(code);
-  
+
   // 토큰 획득 요청
-  const resultToken = await axios.post(process.env.SOCIAL_KAKAO_API_URL_TOKEN, tokenRequest.searchParams, {headers: tokenRequest.headers }); 
+  const resultToken = await axios.post(process.env.SOCIAL_KAKAO_API_URL_TOKEN, tokenRequest.searchParams, { headers: tokenRequest.headers });
   const { access_token } = resultToken.data;
 
   // 사용자 정보 획득 (카카오에서 주는)
@@ -107,7 +115,7 @@ async function socialKakao(code) {
   const resultUser = await axios.post(
     process.env.SOCIAL_KAKAO_API_URL_USER_INFO,
     userRequest.searchParams,
-    { headers:userRequest.headers }
+    { headers: userRequest.headers }
   );
 
   const kakaoId = resultUser.data.id;
@@ -116,12 +124,11 @@ async function socialKakao(code) {
   const nick = resultUser.data.kakao_account.profile.nickname;
 
   const refreshToken = db.sequelize.transaction(async t => {
-
     // 가입한 회원인지 체크
     let user = await userRepository.findByEmail(t, email);
 
-    if(!user){
-      // 미가입 회원이면 회원가입 처리
+    if(!user) {
+      // 미가입 회원이면 회원가입처리
       const data = {
         email,
         profile,
@@ -132,16 +139,16 @@ async function socialKakao(code) {
       };
 
       user = await userRepository.create(t, data);
-    }else{
+    } else {
       // 프로바이더 확인하고 카카오 아니면 변경
       if(user.provider !== PROVIDER.KAKAO) {
-        user.provider = PROVIDER.KAKAO; 
+        user.provider = PROVIDER.KAKAO;
       }
     }
-
-    // 우리 리프래시 토큰 생성
+  
+    // 우리 리프래시토큰 생성
     const refreshToken = jwtUtil.generateRefreshToken(user);
-
+  
     // 리프래시토큰 저장
     user.refreshToken = refreshToken;
     await userRepository.save(t, user);
@@ -162,6 +169,7 @@ async function socialKakao(code) {
 
 export default {
   login,
+  logout,
   reissue,
   socialKakao,
 }

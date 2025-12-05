@@ -41,7 +41,9 @@ async function show(id) {
  * @returns {Promise<import("../models/Post.js").Post>}
  */
 async function create(data) {
-  return await postRepository.create(null, data);
+  return await db.sequelize.transaction(async t => {
+    return await postRepository.create(t, data);
+  });
 }
 
 /**
@@ -69,7 +71,6 @@ async function destroy({ userId, postId }) {
     // 게시글 삭제
     await postRepository.destroy(t, postId);
   });
-  
 }
 
 export default {

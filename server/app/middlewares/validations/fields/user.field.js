@@ -1,7 +1,7 @@
 /**
  * @file app/middlewares/validations/fields/user.field.js
  * @description 유저 정보 유효성 검사 필드
- * 251204 v1.0.0 kim init
+ * 251119 v1.0.0 park init
  */
 
 import { body, param } from "express-validator";
@@ -44,13 +44,13 @@ const password = body('password')
 const provider = param('provider')
   .trim()
   .notEmpty()
-  .withMessage('필수 항목 입니다')
+  .withMessage('필수 항목입니다.')
   .bail()
   .custom(val => {
     return PROVIDER[val.toUpperCase()] ? true : false;
   })
-  .withMessage('허용하지 않는 값입니다')
-  ;
+  .withMessage('허용하지 않는 값입니다.')
+;
 
 export default {
   email,
