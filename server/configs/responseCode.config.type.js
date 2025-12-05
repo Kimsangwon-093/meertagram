@@ -1,7 +1,7 @@
 /**
  * @file configs/responseCode.config.type.js
- * @description `configs/responseCode.config.js` 에서 사용되는 타입 정의 파일
- * 251119 v1.0.0 Kim init
+ * @description `configs/responseCode.config.js`에서 사용하는 타입 정의 파일
+ * 251205 v1.0.0 kim init
  */
 
 /**

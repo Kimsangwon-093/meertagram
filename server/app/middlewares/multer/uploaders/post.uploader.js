@@ -1,7 +1,7 @@
 /**
  * @file app/middlewares/multer/uploaders/post.uploader.js
  * @description 게시글 이미지 업로더
- * 251127 v1.0.0 park init
+ * 251205 v1.0.0 kim init
  */
 
 import multer from 'multer';

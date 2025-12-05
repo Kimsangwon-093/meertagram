@@ -1,7 +1,7 @@
 /**
  * @file databases/seeders/dummy-posts.seeder.js
  * @description posts table dummy data create
- * 251128 v1.0.0 park init
+ * 251205 v1.0.0 kim init
  */
 
 import { fakerKO } from '@faker-js/faker';

@@ -1,7 +1,7 @@
 /**
  * @file app/services/comments.service.js
  * @description comments Service
- * 251203 park init
+ * 251205 kim init
  */
 
 import commentRepository from "../repositories/comment.repository.js"

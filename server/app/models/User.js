@@ -1,7 +1,7 @@
 /**
  * @file app/models/User.js
  * @description user model
- * 251120 v1.0.0 kim init
+ * 251205 v1.0.0 kim init
  */
 
 import dayjs from 'dayjs';

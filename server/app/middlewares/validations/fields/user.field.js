@@ -1,7 +1,7 @@
 /**
  * @file app/middlewares/validations/fields/user.field.js
  * @description 유저 정보 유효성 검사 필드
- * 251204 v1.0.0 kim init
+ * 251205 v1.0.0 kim init
  */
 
 import { body, param } from "express-validator";

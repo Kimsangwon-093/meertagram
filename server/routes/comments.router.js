@@ -1,12 +1,12 @@
 /**
  * @file routes/comments.router.js
  * @description comment 관련 라우터
- * 251203 v1.0.0 park init
+ * 251205 v1.0.0 kim init
  */
 
 import express from 'express';
 import authMiddleware from '../app/middlewares/auth/auth.middleware.js';
-import storeValidator from '../app/middlewares/validations/validators/comments/store.validator.js';
+import storeValidator from '../app/middlewares/validations/validators/posts/store.validator.js';
 import validationHandler from '../app/middlewares/validations/validationHandler.js';
 import commentsController from '../app/controllers/comments.controller.js';
 

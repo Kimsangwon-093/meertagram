@@ -1,7 +1,7 @@
 /**
  * @file app/utils/social/social.kakao.util.js
  * @description 카카오 소셜 관련 유틸리티
- * 251204 v1.0.0 park init
+ * 251205 v1.0.0 kim init
  */
 
 /**

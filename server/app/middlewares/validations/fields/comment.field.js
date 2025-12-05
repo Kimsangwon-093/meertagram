@@ -1,7 +1,7 @@
 /**
  * @file app/middlewares/validations/fields/comment.field.js
  * @description comment 유효성 검사 필드
- * 251203 v1.0.0 park init
+ * 251205 v1.0.0 kim init
  */
 
 import { body } from "express-validator";

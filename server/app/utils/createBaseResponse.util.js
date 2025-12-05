@@ -1,7 +1,7 @@
 /**
  * @file app/utils/createBaseResponse.util.js
  * @description 공통 응답 형식을 생성하는 유틸리티
- * 251119 v1.0.0 park init
+ * 251205 v1.0.0 kim init
  */
 
 /**

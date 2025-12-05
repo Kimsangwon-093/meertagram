@@ -1,7 +1,7 @@
 /**
  * @file app/middlewares/validations/validators/auth/login.validator.js
  * @description 로그인용 유효성 체크
- * 251119 v1.0.0 Kim init
+ * 251205 v1.0.0 Kim init
  */
 
 // import { email, password } from "../../fields/user.field.js";

@@ -1,7 +1,7 @@
 /**
  * @file /app/utils/jwt/jwt.util.js
  * @description jwt 유틸리티
- * 251125 v1.0.0 Kim init
+ * 251205 v1.0.0 kim init
  */
 
 import jwt from 'jsonwebtoken';
@@ -66,19 +66,19 @@ function generateRefreshToken(user) {
 
 /**
  * 헤더에서 토큰 획득
- * @param {import("express").Request} req
- * @returns {string} token 
+ * @param {import("express").Request} req 
+ * @returns {string} token
  */
 function getBearerToken(req) {
   // 베어러 토큰 획득
   const bearerToken = req.headers[process.env.JWT_HEADER_KEY];
 
   // 베어러 토큰 미존재
-  if(!bearerToken){
+  if(!bearerToken) {
     throw myError('베어러 토큰 없음', UNAUTHORIZED_ERROR);
   }
 
-  // 베어러 토큰 형식 검증
+  // 베어러토큰 형식 검증
   const tokenParts = bearerToken.split(' ');
   if(tokenParts.length !== 2 || tokenParts[0] !== process.env.JWT_SCHEME) {
     throw myError('베어러 토큰 형식 이상', INVALID_TOKEN_ERROR);
@@ -95,12 +95,12 @@ function getBearerToken(req) {
 function getClaimsWithVerifyToken(token) {
   try {
     return jwt.verify(token, process.env.JWT_SECRET);
-  } catch (error) {
+  } catch(error) {
     if(error instanceof jwt.TokenExpiredError) {
-      throw myError('토큰 만료',EXPIRED_TOKEN_ERROR)
-    }else if(error instanceof jwt.JsonWebTokenError) {
-      throw myError('토큰 이상',INVALID_TOKEN_ERROR)
-    }else{
+      throw myError('토큰 만료', EXPIRED_TOKEN_ERROR);
+    } else if(error instanceof jwt.JsonWebTokenError) {
+      throw myError('토큰 이상', INVALID_TOKEN_ERROR);
+    } else {
       throw error;
     }
   }
@@ -111,5 +111,5 @@ export default {
   generateAccessToken,
   generateRefreshToken,
   getBearerToken,
-  getClaimsWithVerifyToken
+  getClaimsWithVerifyToken,
 };

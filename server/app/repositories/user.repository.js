@@ -1,7 +1,7 @@
 /**
  * @file app/repositories/user.repository.js
  * @description User Repository
- * 251204 v1.0.0 kim init
+ * 251205 v1.0.0 kim init
  */
 
 import db from '../models/index.js';
@@ -49,9 +49,24 @@ async function create(t = null, data) {
   return await User.create(data, { transaction: t });
 }
 
+async function logout(t = null, id) {
+  return await User.update(
+    {
+      refreshToken: null
+    },
+    {
+      where: {
+        id:id
+      },
+     transaction: t
+    }
+  )
+};
+
 export default {
   findByEmail,
   save,
   findByPk,
   create,
+  logout,
 }

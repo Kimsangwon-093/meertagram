@@ -1,7 +1,7 @@
 /**
  * @file app/models/Like.js
  * @description Like model
- * 251120 v1.0.0 park init
+ * 251205 v1.0.0 park init
  */
 
 import dayjs from 'dayjs';

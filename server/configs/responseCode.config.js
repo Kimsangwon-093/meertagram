@@ -1,13 +1,4 @@
 /**
- * @file configs/responseCode.config.js
- * @description 서비스 전역 응답 코드 설정 모듈(각 API 응답 시 참조되는 표준 응답 코드 정의)
- * 251119 v1.0.0 park init
- */
-
-// ---------------------
-// type import
-// ---------------------
-/**
  * 정상 처리 응답 코드 설정
  * @type {ResponseCodeConfig}
  */
@@ -176,7 +167,7 @@ const SYSTEM_ERROR = {
 Object.freeze(SYSTEM_ERROR);
 
 export {
-  SUCCESS,
+   SUCCESS,
   NOT_REGISTERED_ERROR,
   UNAUTHORIZED_ERROR,
   FORBIDDEN_ERROR,

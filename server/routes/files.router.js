@@ -1,7 +1,7 @@
 /**
  * @file routes/files.Router.js
  * @description 인증 관련 라우터
- * 251119 v1.0.0 Kim init
+ * 251205 v1.0.0 Kim init
  */
 
 import express from 'express';

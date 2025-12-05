@@ -1,7 +1,7 @@
 /**
  * @file app/models/Post.js
  * @description Post model
- * 251120 v1.0.0 park init
+ * 251205 v1.0.0 kim init
  */
 
 import dayjs from 'dayjs';

@@ -1,7 +1,7 @@
 /**
  * @file /app/middlewares/auth/auth.middleware.js
  * @description 인증 및 인가 처리 미들웨어
- * 251126 v1.0.0 park init
+ * 251205 v1.0.0 kim init
  */
 
 import { FORBIDDEN_ERROR } from "../../../configs/responseCode.config.js";
@@ -12,6 +12,7 @@ import ROLE_PERMISSIONS from "./configs/role.permissions.js";
 // -----------------
 // Private
 // -----------------
+
 /**
  * 토큰 검증 및 Request에 유저 정보 추가
  * @param {import("express").Request} req 

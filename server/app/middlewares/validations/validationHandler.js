@@ -1,7 +1,7 @@
 /**
  * @file app/middlewares/validations/validationHandler.js
  * @description 유효성 검사 핸들러 
- * 251119 v1.0.0 Kim init
+ * 251205 v1.0.0 Kim init
  */
 
 // 3.유효성 검사 결과를 모아서 에러가 발생 했는지에 대한 여부 

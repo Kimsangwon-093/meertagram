@@ -1,7 +1,7 @@
 /**
  * @file routes/posts.Router.js
  * @description 404 관련 라우터
- * 251128 v1.0.0 Kim init
+ * 251205 v1.0.0 Kim init
  */
 
 import express from 'express';
